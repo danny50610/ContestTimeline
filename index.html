@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>1051 競賽時程表</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>1051 競賽時程表</h1>
+    <div class="alert alert-warning" role="alert">
+        <strong>Warning!</strong> 僅供參考，以主辦單位公告為準
+    </div>
+    <div id="timeline" style="height: 250px"></div>
+    <ul>
+        <li>2016 NCPC：<a href="http://ncpc.nsysu.edu.tw/bin/home.php">105年度全國大專電腦軟體設計競賽 </a></li>
+        <li>105 金盾：<a href="https://security.cisanet.org.tw/shield.aspx">105年資安技能金盾獎</a></li>
+        <li>2016 ACM-ICPC Asia：<a href="https://icpc2016.cse.yzu.edu.tw/index.html">The 2016 ACM-ICPC Asia Chung-Li Regional Contest</a></li>
+        <li>2016 ACM-ICPC Asia Online：<a href="http://pcca.nctu.edu.tw/2016topc/">2016 ACM-ICPC Taiwan Online Programming Contest</a></li>
+    </ul>
+</div>
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    google.charts.load("current", {packages: ["timeline"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn({type: 'string', id: 'Position'});
+        dataTable.addColumn({type: 'string', id: 'Name'});
+        dataTable.addColumn({type: 'date', id: 'Start'});
+        dataTable.addColumn({type: 'date', id: 'End'});
+        dataTable.addRows([
+            ['2016 NCPC', '報名', new Date(2016, 8, 1), new Date(2016, 8, 22)],
+            ['2016 NCPC', '初賽', new Date(2016, 9, 1), new Date(2016, 9, 1)],
+            ['2016 NCPC', '決賽', new Date(2016, 9, 15), new Date(2016, 9, 15)],
+            ['105 金盾', '報名', new Date(2016, 8, 1), new Date(2016, 9, 5)],
+            ['105 金盾', '初賽', new Date(2016, 9, 15), new Date(2016, 9, 15)],
+            ['105 金盾', '公告進入決賽隊伍', new Date(2016, 9, 20), new Date(2016, 9, 20)],
+            ['105 金盾', '決賽', new Date(2016, 10, 25), new Date(2016, 10, 25)],
+            ['2016 ACM-ICPC Asia', '報名', new Date(2016, 8, 1), new Date(2016, 9, 25)],
+            ['2016 ACM-ICPC Asia', '比賽', new Date(2016, 10, 25), new Date(2016, 10, 26)],
+            ['2016 ACM-ICPC Asia Online', '報名', new Date(2016, 8, 1), new Date(2016, 9, 9)],
+            ['2016 ACM-ICPC Asia Online', '比賽', new Date(2016, 9, 16), new Date(2016, 9, 16)],
+        ]);
+
+        chart.draw(dataTable);
+    }
+</script>
+</body>
+</html>
